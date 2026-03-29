@@ -1,0 +1,32 @@
+remote_state {
+    backend = "s3"
+
+    generate = {
+        path = "backend.tf"
+        if_exists = "overwrite_terragrunt"
+    }
+
+    config = {
+        bucket = "donggyu-gitops-state"
+        key = "${path_relative_to_include()}/terraform.tfstate"
+        region = "ap-northeast-2"
+        encrypt = true
+        assume_role = {
+            role_arn = "arn:aws:iam::${get_aws_account_id()}:role/TerraformAssumedRole"
+        }
+    }
+}
+
+generate "provider" {
+    path = "provider.tf"
+    if_exists = "skip"
+    contents = <<EOF
+    provider "aws" {
+    region = "ap-northeast-2"
+    assume_role {
+        role_arn = "arn:aws:iam::${get_aws_account_id()}:role/TerraformAssumedRole"
+    }
+}
+EOF
+}
+

@@ -1,0 +1,8 @@
+services:
+  web:
+    build: .
+    ports:
+      - "80:8080"
+    environment:
+      - TARGET_URL=${TARGET_URL:-http://example.com}
+      - APP_NAME=${APP_NAME:-lattice-app}
