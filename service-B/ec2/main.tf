@@ -27,13 +27,13 @@ locals {
       from_port = 22
       to_port = 22
       protocol = "tcp"
-      cidr_blocks= ["220.86.168.26/32"]
+      cidr_blocks= ["{internal_ip}"]
     },
     "http" = {
       from_port = 80
       to_port = 80
       protocol = "tcp"
-      cidr_blocks= ["220.86.168.26/32"]
+      cidr_blocks= ["{internal_ip}"]
     }
   }
 

@@ -2,6 +2,6 @@
     provider "aws" {
     region = "ap-northeast-2"
     assume_role {
-        role_arn = "arn:aws:iam::182024812696:role/TerraformAssumedRole"
+        role_arn = "arn:aws:iam::{account_id}:role/TerraformAssumedRole"
     }
 }
