@@ -23,3 +23,20 @@
     - **AWS IAM 은 Sigv4 요청으로 진행함 (운영환경은 이걸로 최대한 진행)**
 - Lattice Target Group (서비스와 1:1)
     - 이때 Lattice는 TargetGroup을 기반으로  트래픽을 어디로 보낼지 지정하는 용도로 구성 (**vpc lattice 용 target group 이 있음**)
+
+## 각 도메인별로 통신확인
+
+```sh
+input_svc_dns = tolist([
+  {
+    "domain_name" = "input-svc-0e20fcab0977376c3.7d67968.vpc-lattice-svcs.ap-northeast-2.on.aws"
+    "hosted_zone_id" = "Z04595802HTZ0Z5UOTYYK"
+  },
+])
+output_svc_dns = tolist([
+  {
+    "domain_name" = "output-svc-0f36f438f8218bf4f.7d67968.vpc-lattice-svcs.ap-northeast-2.on.aws"
+    "hosted_zone_id" = "Z04595802HTZ0Z5UOTYYK"
+  },
+])
+```
